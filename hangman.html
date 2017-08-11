@@ -71,7 +71,7 @@
         //targetDiv.appendChild(newDiv);
         for(var i=0; i < chosenWord.length; i++){
       
-                $("#game").append($('<div>').html("_ ").attr("id", i));
+                $("#game").append($('<span>').html("_ ").attr("id", i));
 
         // var anything = $('<div>').html(drinkList[i]).attr("id", i)
         // $("#drink-options").append(anything);
@@ -99,8 +99,10 @@
 
 
             var l = chosenLetters.indexOf(userGuess);
+            var h = "#" + l;
             underscores.splice(l, 1, userGuess);
             console.log(underscores);
+            $(h).html(userGuess);
 
      
         }
