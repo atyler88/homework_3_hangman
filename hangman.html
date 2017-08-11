@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+</head>
+
+<body>
+
+  <div id="game">
+
+  </div>
+
+  <script type="text/javascript">
+    // Whenever a key is pressed, alert "pressed a button".
+    // document.onkeyup = function() {
+    //   alert("pressed a button");
+    // };
+    var wins = 0;
+    var losses = 0;
+    var tries = 6;
+ 
+
+    var acceptableKeys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    
+                    
+    var wordList = ["counter", "mousepad", "tribute", "laptop", "headphones", "cache", "tabletop", "boardgame"];
+    var chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log(chosenWord);
+    console.log(tries + " tries left");
+    var chosenLetters = chosenWord.split("");
+
+    var n = chosenWord.length;
+    var underscores = new Array(n).fill("_");
+    document.write(underscores);
+    // for(i=0; i < n; i++){
+    // var underscore = document.createElement("div");
+    // underscore.innerHTML = "_";
+    // }
+
+    // function nameOfFunction(listOfVariableNames) {
+    //     function code should be written here
+    // }
+
+    // function getAllIndexes(arr, val) {
+    // var indexes = [], i;
+    // for(i = 0; i < arr.length; i++)
+    //     if (arr[i] === val)
+    //         indexes.push(i);
+    // return indexes;
+    // }
+    
+    // var startAt = l;
+    //     for(var i = 0; i <chosenWord.length; i++){
+    //     console.log(chosenWord[startAt]);
+    //         if(startAt==chosenWord.length-1){
+    //             startAt = -1;
+    //         } 
+    //      startAt++;
+    //     }
+
+        // <div id="empty-div"></div> put this above script.
+        //var targetDive = document.getElementById(""empty-div);
+        //targetDiv.innerHTML = "Hello friennds!";
+        ///var newDiv = document.createElement("div");
+        //targetDiv.appendChild(newDiv);
+
+    document.onkeyup = function(event) {
+
+        var userGuess = event.key;
+        console.log(userGuess);
+
+        if (acceptableKeys.indexOf(userGuess) == -1) {
+            alert("press a letter please");
+        }
+        else if(chosenWord.indexOf(userGuess) >= 0){
+            console.log("you have chosen a correct letter");
+
+
+
+            var l = chosenLetters.indexOf(userGuess);
+            underscores.splice(l, 1, userGuess);
+            console.log(underscores);
+        }
+        else if(chosenWord.indexOf(userGuess) == -1) {
+            tries--;
+            console.log(tries + " tries left");
+            if (tries == 0) {
+                console.log("you lose");
+                losses++;
+                console.log(losses);
+            } 
+        }
+    }
+
+           
+    // var computerChoices = ["r", "p", "s"];
+
+/*
+Hard code a list of words as an array
+randomly select a word
+break the chosen into an array of its letters-look into a function of strings called split
+log the key pressed
+make sure its not a duplicate
+see if it matches the letter in the word
+Display a blank word with the same length
+display letters chosen replace underscores
+
+
+*/
+
+
+  
+                    // document.onkeyup = function(event) {
+                    //   var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+                    //   var userGuess = event.key;
+                    //   if (computerChoices.indexOf(userGuess) == -1) {
+                    //     alert("press r p or s please");
+                    //   }
+
+                    //     else if(computerChoices.indexOf(computerGuess) == 0 && userGuess=="s"){
+                    //       alert("you lose");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 1 && userGuess=="s"){
+                    //        alert("you win");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 2 && userGuess=="s"){
+                    //        alert("you tie");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 0 && userGuess=="r"){
+                    //       alert("you tie");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 1 && userGuess=="r"){
+                    //        alert("you lose");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 2 && userGuess=="r"){
+                    //        alert("you win");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 0 && userGuess=="p"){
+                    //       alert("you win");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 1 && userGuess=="p"){
+                    //        alert("you lose");
+                    //     }
+                    //     else if(computerChoices.indexOf(computerGuess) == 2 && userGuess=="p"){
+                    //        alert("you tie");}
+
+
+     
+
+     
+
+
+      // alert("User guess: " + userGuess);
+
+    
+      // alert("Computer guess: " + computerGuess);
+    // }
+
+
+    //user presses key
+// var gameDiv = document.getElementById('game');
+
+// var word = "cookies";
+
+// var splitWord = word.split("");
+
+// for(var i =0; i < splitWord.length; i++){
+//   var div = document.createElement('div');
+//   div.id = i;
+//   div.innerHTML = "_";
+//   gameDiv.appendChild(div);
+// }
+
+// document.onkeyup = function(event){
+//    let guess = event.key;
+//   console.log(guess);
+  
+//   if(splitWord.indexOf(guess) != -1){
+//     var existingLetters = getAllIndexes(splitWord, guess);
+    
+//     for(var j=0; j<existingLetters.length; j++){
+//       var letter = document.getElementById(existingLetters[j]);
+//       letter.innerHTML = guess;
+//     }
+//   }
+// };
+
+// function getAllIndexes(arr, val) {
+//     var indexes = [], i;
+//     for(i = 0; i < arr.length; i++)
+//         if (arr[i] === val)
+//             indexes.push(i);
+//     return indexes;
+// }
+
+// console.log(getAllIndexes(["a", "b", "b", "a"], "b"));
+
+
+
+
+  </script>
+
+</body>
+
+</html>
