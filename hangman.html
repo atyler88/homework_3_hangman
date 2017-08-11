@@ -4,10 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Hangman Game</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
 <body>
-
+<h1>Hangman</div>
+    <div>wins</div>
+    <div>losses</div>
+    <div>tries left</div>
   <div id="game">
 
   </div>
@@ -33,7 +37,7 @@
 
     var n = chosenWord.length;
     var underscores = new Array(n).fill("_");
-    document.write(underscores);
+    // document.write(underscores);
     // for(i=0; i < n; i++){
     // var underscore = document.createElement("div");
     // underscore.innerHTML = "_";
@@ -65,6 +69,21 @@
         //targetDiv.innerHTML = "Hello friennds!";
         ///var newDiv = document.createElement("div");
         //targetDiv.appendChild(newDiv);
+        for(var i=0; i < chosenWord.length; i++){
+      
+                $("#game").append($('<div>').html("_ ").attr("id", i));
+
+        // var anything = $('<div>').html(drinkList[i]).attr("id", i)
+        // $("#drink-options").append(anything);
+
+        // var newDiv = document.createElement("div");
+        // newDiv.innerHTML = drinkList[i];
+        // var idString = "div-" + [i];
+        // newDiv.setAttribute = idString;
+        // targetDiv.appendChild(newDiv);
+
+        }
+
 
     document.onkeyup = function(event) {
 
@@ -82,6 +101,8 @@
             var l = chosenLetters.indexOf(userGuess);
             underscores.splice(l, 1, userGuess);
             console.log(underscores);
+
+     
         }
         else if(chosenWord.indexOf(userGuess) == -1) {
             tries--;
