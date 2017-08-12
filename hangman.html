@@ -5,13 +5,22 @@
   <meta charset="UTF-8">
   <title>Hangman Game</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 </head>
 
 <body>
-<h1>Hangman</div>
+<h1>Hangman</h1>
     <div>wins</div>
+    <span id="wins"><br></span>
     <div>losses</div>
+    <span id="losses"><br></span>
+
     <div>tries left</div>
+    <span id="tries"><br></span>
+
   <div id="game">
 
   </div>
@@ -21,7 +30,7 @@
     // document.onkeyup = function() {
     //   alert("pressed a button");
     // };
-    var wins = 1;
+    var wins = 0;
     var losses = 0;
     var tries = 6;
  
@@ -69,6 +78,9 @@
         //targetDiv.innerHTML = "Hello friennds!";
         ///var newDiv = document.createElement("div");
         //targetDiv.appendChild(newDiv);
+
+         $("#losses").html(losses);
+
         for(var i=0; i < chosenWord.length; i++){
       
                 $("#game").append($('<span>').html("_ ").attr("id", i));
@@ -91,7 +103,7 @@
         console.log(userGuess);
 
         if (acceptableKeys.indexOf(userGuess) == -1) {
-            alert("press a letter please");
+            console.log("press a letter please");
         }
         else if(chosenWord.indexOf(userGuess) >= 0){
             console.log("you have chosen a correct letter");
@@ -108,11 +120,13 @@
         }
         else if(chosenWord.indexOf(userGuess) == -1) {
             tries--;
+             $("#tries").html(tries);
             console.log(tries + " tries left");
             if (tries == 0) {
                 console.log("you lose");
                 losses++;
                 console.log(losses);
+                $("#losses").html(losses);
             } 
         }
     }
